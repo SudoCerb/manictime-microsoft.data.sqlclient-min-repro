@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AssemblyName>TagPlugin</AssemblyName>
+    <RootNamespace>TagPlugin</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\installable-plugin\$(Configuration)\Plugins\Packages\ManicTime.TagSource.SampleTagPlugin\Lib\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\installable-plugin\$(Configuration)\Plugins\Packages\ManicTime.TagSource.SampleTagPlugin\Lib\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="PluginIcon.png" />
+    <None Remove="Settings\SettingsView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="PluginIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TagPlugin.Domain\TagPlugin.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Finkit.ManicTime.Client">
+      <HintPath>..\..\..\libs\Finkit.ManicTime.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Finkit.ManicTime.Common">
+      <HintPath>..\..\..\libs\Finkit.ManicTime.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Finkit.ManicTime.Shared">
+      <HintPath>..\..\..\libs\Finkit.ManicTime.Shared.dll</HintPath>
+    </Reference>
+	  <Reference Include="Microsoft.EntityFrameworkCore">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\7.0.5\lib\net6.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.EntityFrameworkCore.Abstractions">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.abstractions\7.0.5\lib\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.EntityFrameworkCore.Relational">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.relational\7.0.5\lib\net6.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.EntityFrameworkCore.SqlServer">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.sqlserver\7.0.5\lib\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Caching.Abstractions">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.caching.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Caching.Memory">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.caching.memory\7.0.0\lib\net6.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.configuration.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.DependencyInjection">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection\7.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Logging">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.logging\7.0.0\lib\net6.0\Microsoft.Extensions.Logging.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.logging.abstractions\7.0.0\lib\net6.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Options">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.options\7.0.0\lib\net6.0\Microsoft.Extensions.Options.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Microsoft.Extensions.Primitives">
+		  <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.extensions.primitives\7.0.0\lib\net7.0\Microsoft.Extensions.Primitives.dll</HintPath>
+	  </Reference>
+    <Reference Include="ManicTime.Api">
+      <HintPath>..\..\..\libs\ManicTime.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="TagPlugins.Core">
+      <HintPath>..\..\..\libs\TagPlugins.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(ProjectDir)PluginSpec.json&quot; &quot;$(TargetDir)..\PluginSpec.json&quot;&#xD;&#xA;copy &quot;$(ProjectDir)PluginIcon.png&quot; &quot;$(TargetDir)..\PluginIcon.png&quot;&#xD;&#xA;del &quot;$(TargetDir)Finkit.ManicTime.Client.dll&quot;&#xD;&#xA;del &quot;$(TargetDir)Finkit.ManicTime.Common.dll&quot;&#xD;&#xA;del &quot;$(TargetDir)Finkit.ManicTime.Shared.dll&quot;&#xD;&#xA;rmdir /S /Q &quot;$(TargetDir)ref&#xD;&#xA;rmdir /S /Q &quot;%25USERPROFILE%25\AppData\Local\Finkit\ManicTime\Plugins\Packages&quot;&#xD;&#xA;mkdir &quot;%25USERPROFILE%25\AppData\Local\Finkit\ManicTime\Plugins\Packages&quot;&#xD;&#xA;ping localhost -n 3 &gt; nul&#xD;&#xA;xcopy /E &quot;$(TargetDir)..\..&quot; &quot;%25USERPROFILE%25\AppData\Local\Finkit\ManicTime\Plugins\Packages&quot;" />
+  </Target>
+
+</Project>

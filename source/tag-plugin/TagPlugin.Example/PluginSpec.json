@@ -1,0 +1,9 @@
+﻿{
+  "Id": "ManicTime.TagSource.SampleTagPlugin",
+  "Version": "2023.1.0.0",
+  "Name": "Tag Exporter",
+  "Description": "Export tags to an external database.",
+  "Type": "TagSource",
+  "AssemblyName": "TagPlugin.dll",
+  "MinHostVersion": "2023.1"
+}

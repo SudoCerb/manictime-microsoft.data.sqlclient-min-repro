@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "TagPlugin.Example": {
+      "commandName": "Project"
+    },
+    "Launch and Debug": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\ManicTime\\ManicTimeClient.exe"
+    }
+  }
+}

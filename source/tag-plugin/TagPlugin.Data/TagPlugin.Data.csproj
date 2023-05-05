@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TagPlugin.Domain\TagPlugin.Domain.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\6.0.16\lib\net6.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer">
+      <HintPath>..\..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.sqlserver\6.0.16\lib\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
