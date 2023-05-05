@@ -62,7 +62,7 @@ Host:
 	microsoft.extensions.caching.abstractions\6.0.0
 	microsoft.extensions.caching.memory\6.0.1
 	```
-	I also installed tht latest version of EntityFrameworkCore, but this configuration is the one that replicates my current state.
+	I also installed the latest version of EntityFrameworkCore, but this configuration is the one that replicates my current state.
 7. Update the relative paths for the required assemblies (sorry!) in: 
 	- `TagPlugin.Data.csproj` for `Microsoft.EntityFrameworkCore` and `Microsoft.EntityFrameworkCore.SqlServer`
 	- `TagPlugin.Example.csproj` for `Microsoft.Data.SqlClient`, `Microsoft.EntityFrameworkCore`, `Microsoft.EntityFrameworkCore.Abstractions`, `Microsoft.EntityFrameworkCore.Relational`, `Microsoft.EntityFrameworkCore.SqlServer`, `Microsoft.Extensions.Caching.Abstractions`, and `Microsoft.Extensions.Caching.Memory`
